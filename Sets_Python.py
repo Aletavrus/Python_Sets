@@ -39,3 +39,24 @@ def AnalyseText(line1, line2):
     uniq2 = line2
     uniq2.difference_update(line1)
     return uniq1, uniq2, same
+
+def SearchMissed(lst):
+    miss = []
+    for i in range(len(lst)-1):
+        if lst[i]!=(lst[i+1]-1):
+            for k in range(lst[i]+1, lst[i+1]):
+                miss.append(k)
+    return miss
+
+def Words(lett, word):
+    poss = []
+    for i in range(len(word)):
+        curr = word[i]
+        flag = True
+        for k in range(len(curr)):
+            if not curr[k] in lett:
+                flag = False
+                break
+        if flag:
+            poss.append(curr)
+    return poss
